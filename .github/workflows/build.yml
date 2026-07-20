@@ -19,6 +19,12 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    - name: Build APK
+    - name: Build APK with Gradle
       run: |
-        echo "Building project..."
+        gradle assembleDebug --stacktrace
+
+    - name: Upload APK
+      uses: actions/upload-artifact@v3
+      with:
+        name: DivineIQ-App
+        path: app/build/outputs/apk/debug/app-debug.apk
