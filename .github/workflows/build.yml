@@ -21,10 +21,8 @@ jobs:
 
     - name: Clean & Build Complete Android App
       run: |
-        # 1. पूरा प्रोजेक्ट स्ट्रक्चर बनाना
         mkdir -p app/src/main/java/com/divineiq/app
 
-        # 2. root build.gradle
         cat << 'EOF' > build.gradle
         buildscript {
             repositories {
@@ -44,10 +42,8 @@ jobs:
         }
         EOF
 
-        # 3. settings.gradle
         echo "include ':app'" > settings.gradle
 
-        # 4. app/build.gradle
         cat << 'EOF' > app/build.gradle
         apply plugin: 'com.android.application'
         apply plugin: 'kotlin-android'
@@ -79,7 +75,6 @@ jobs:
         }
         EOF
 
-        # 5. AndroidManifest.xml
         cat << 'EOF' > app/src/main/AndroidManifest.xml
         <?xml version="1.0" encoding="utf-8"?>
         <manifest xmlns:android="http://schemas.android.com/apk/res/android">
@@ -101,7 +96,6 @@ jobs:
         </manifest>
         EOF
 
-        # 6. MainActivity.kt
         cat << 'EOF' > app/src/main/java/com/divineiq/app/MainActivity.kt
         package com.divineiq.app
 
